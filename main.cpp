@@ -8,58 +8,65 @@ int main()
     string listObjects[3] = {"Rock", "Paper", "Scissor"};
     string choicePlayer = "";
     bool choiceVerified = false;
+    string response = "yes";
 
-    for (int i = 0; i <= 2; i++)
+    while (response == "yes")
     {
-        cout << listObjects[i] + "\n";
-    }
-    cout << "Choose one of the options above: ";
-    cin >> choicePlayer;
-
-    for (int i = 0; i < 3; i++)
-    {
-        if (listObjects[i] == choicePlayer)
+        for (int i = 0; i <= 2; i++)
         {
-            choiceVerified = true;
-            break;
+            cout << listObjects[i] + "\n";
         }
-    }
+        cout << "Choose one of the options above: ";
+        cin >> choicePlayer;
 
-    if (!choiceVerified)
-    {
-        cout << "Incorrect option!";
-        return 0;
-    }
+        for (int i = 0; i < 3; i++)
+        {
+            if (listObjects[i] == choicePlayer)
+            {
+                choiceVerified = true;
+                break;
+            }
+        }
 
-    random_device seed;
-    mt19937 generator(seed());
-    uniform_int_distribution<> distribution(0, 2);
+        if (!choiceVerified)
+        {
+            cout << "Incorrect option!";
+            return 0;
+        }
 
-    int choiceCPUIndex = distribution(generator);
-    string choiceCPU = listObjects[choiceCPUIndex];
+        random_device seed;
+        mt19937 generator(seed());
+        uniform_int_distribution<> distribution(0, 2);
 
-    if (choicePlayer == choiceCPU)
-    {
-        cout << "\n Draw!";
-    }
-    else if (choicePlayer == "Rock" && choiceCPU == "Scissor")
-    {
-        cout << "\n You won!";
-    }
-    else if (choicePlayer == "Paper" && choiceCPU == "Rock")
-    {
-        cout << "\n You won!";
-    }
-    else if (choicePlayer == "Scissor" && choiceCPU == "Paper")
-    {
-        cout << "\n You won!";
-    }
-    else
-    {
-        cout << "\n You lost...";
-    }
+        int choiceCPUIndex = distribution(generator);
+        string choiceCPU = listObjects[choiceCPUIndex];
 
-    cout << "\n" + choicePlayer + " x " + choiceCPU + "\n";
+        if (choicePlayer == choiceCPU)
+        {
+            cout << "\n Draw!";
+        }
+        else if (choicePlayer == "Rock" && choiceCPU == "Scissor")
+        {
+            cout << "\n You won!";
+        }
+        else if (choicePlayer == "Paper" && choiceCPU == "Rock")
+        {
+            cout << "\n You won!";
+        }
+        else if (choicePlayer == "Scissor" && choiceCPU == "Paper")
+        {
+            cout << "\n You won!";
+        }
+        else
+        {
+            cout << "\n You lost...";
+        }
+
+        cout << "\n" + choicePlayer + " x " + choiceCPU + "\n";
+
+        cout << "Do you want to play again? ";
+        cin >> response;
+    }
 
     return 0;
 }
