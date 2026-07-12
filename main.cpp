@@ -6,9 +6,28 @@ int main()
 {
     string listObjects[3] = {"Rock", "Paper", "Scissor"};
     string choicePlayer = "";
+    bool choiceVerified = false;
 
-    cout << listObjects[0] + "\n" + listObjects[1] + "\n" + listObjects[2] + "\n";
-    cout << "Choose one of the options above.";
+    for (int i = 0; i <= 2; i++)
+    {
+        cout << listObjects[i] + "\n";
+    }
+    cout << "Choose one of the options above: ";
+    cin >> choicePlayer;
+
+    for (int i = 0; i < 2; i++)
+    {
+        if (listObjects[i] == choicePlayer)
+        {
+            choiceVerified = true;
+            break;
+        }
+    }
+
+    if (!choiceVerified)
+    {
+        cout << "Incorrect option!";
+    }
 
     return 0;
 }
