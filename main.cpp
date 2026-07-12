@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 using namespace std;
+#include <random>
 
 int main()
 {
@@ -28,6 +29,12 @@ int main()
     {
         cout << "Incorrect option!";
     }
+
+    random_device seed;
+    mt19937 generator(seed());
+    uniform_int_distribution<> distribution(0, 2);
+
+    int choiceCPU = distribution(generator);
 
     return 0;
 }
